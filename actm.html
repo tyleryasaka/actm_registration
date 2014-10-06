@@ -1,27 +1,30 @@
 <!DOCTYPE HTML>
 <html lang ="en">
 <head>
-<!--Coded by Tyler Yasaka, Victor Rogers, Ben Etheredge-->
-<!--This head stuff looks rough and could use some work :( -->
-        <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-        <meta charset="UTF-8">
- <meta name="AUTHOR" content="Tyler Yasaka, Victor Rogers, Ben Etheredge">
-        <title>Alabama Statewide High School Mathematics Contest Online Registration</title>
+	<!--Coded by Tyler Yasaka, Victor Rogers, Ben Etheredge-->
+	
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta charset="UTF-8">
+	<meta name="AUTHOR" content="Tyler Yasaka, Victor Rogers, Ben Etheredge">
+	<title>Alabama Statewide High School Mathematics Contest Online Registration</title>
 
-<!--Jquery-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<!--Jquery-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<!--Bootstrap-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!--Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-        <link rel="stylesheet" href="style.css">
+	<!--Custom JS-->
+	<script src="actm.js"></script>
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 <div id="container" class="container">
-    <!--This is the â€œheader" of the page, with the title and banner/logo-->
+    <!--This is the header of the page, with the title and banner/logo-->
     <div id="top">
         <img id="logo" src="logo.png">
         <h1>Alabama Statewide </br> High School Mathematics Contest</h1>
@@ -35,8 +38,10 @@
 
         <form id="mainform">
 
+			<div id="toggle-container">
+
             <!--This is the part of the form with school info.-->
-            <div id="schoolinfo"><h3>School Information</h3>
+            <div id="schoolinfo" class="hide"><h3>School Information</h3>
                 <div class="form-group">
                     <label>School</label>
                     <input class="form-control" type="search"
@@ -77,7 +82,7 @@ name="school" placeholder="Search" />
             </div><!--End School Info-->
 
             <!--This is the part of the form with team info.-->
-            <div id="teaminfo">
+            <div id="teaminfo" class="hide">
 				<h3>Team Information</h3>
                         <div class="form-group">
                             <label>Mentor Name</label>
@@ -152,7 +157,7 @@ name="school" placeholder="Search" />
             </div><!--End Team Info-->
 
             <!--This is the part of the form with payment info.-->
-            <div id="paymentsection"><h3>Payment Information</h3>
+            <div id="paymentsection" class="hide"><h3>Payment Information</h3>
                 <div class="table-responsive">            
                     <table class="table">
                         <tr>
@@ -165,10 +170,10 @@ name="school" placeholder="Search" />
 <!-- Come back and change min/maxlength to take any input and check for correctness with JS-->
                             <td><label>Comprehensive</label></td>
                        <td><input class="form-control" type="number" 
-name="algebraqty" min="0" max="99" value = â€œ0" /></td>
+name="algebraqty" min="0" max="99" value = "0" /></td>
                             <td><label>x $5 =</label></td>
                        <td><input class="form-control" type="number" 
-name="algprice" min="0" max="99" value="0" readonly/></td>                     
+name="algprice" min="0" max="99" value="0" readonly /></td>                     
                         </tr>
                         <tr>
                             <td><label>Algebra II w/Trig</label></td>
@@ -204,15 +209,17 @@ name="total" value="10" readonly /></td>
                     </table>
                 </div>            
             </div><!--End payment section-->
-
-<div id="register" class="form-group">
-<button type="submit" class="btn btn-primary btn-lg">Register</button>
-</div>
-
+            
+            </div><!--End #toggle-container-->
 
         </form>
 
     </div><!--End #maincontent-->
+
+	<div id="register" class="form-group">
+		<button id="back" class="btn btn-primary btn-lg hide" onclick="prevSection()">Back</button>
+		<button id="next" class="btn btn-primary btn-lg" onclick="nextSection()">Next</button>
+	</div>
 
     <!--This is the â€œfooter" of the page, with copyright info etc...-->
     <div id="bottom">
