@@ -14,3 +14,16 @@ $(document).ready(function() {
 	    '#toggle-container div:nth-child('+current_slide+')').toggleClass('show-slide');
 		//$('#toggle-container div:nth-child('+current_slide+')').toggleClass('show-slide');
 	}
+
+i = 2
+function toggleMentor() {
+		if i = 2
+			'#mentor2.toggleClass('mentor2');
+		else if i=3
+			'#mentor3 div:nth-child('+current_slide+')').toggleClass('mentor3');
+		else	
+			'#mentor4 div:nth-child('+current_slide+')').toggleClass('mentor4');
+
+	i+=1
+//$('#toggle-container div:nth-child('+current_slide+')').toggleClass('show-slide');
+}
