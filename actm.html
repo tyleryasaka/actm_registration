@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html lang ="en">
 <head>
+<!--Coded by Tyler Yasaka, Victor Rogers, Ben Etheredge-->
 <!--This head stuff looks rough and could use some work :( -->
         <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-        <meta charset="utf-8&gt;
-&lt;meta name=" author"="" description="*********">
+        <meta charset="UTF-8">
+ <meta name="AUTHOR" content="Tyler Yasaka, Victor Rogers, Ben Etheredge">
         <title>Alabama Statewide High School Mathematics Contest Online Registration</title>
 
 <!--Jquery-->
@@ -17,10 +18,9 @@
 
         <link rel="stylesheet" href="style.css">
 
-    </head>
 </head>
 <body>
-<div id="container">
+<div id="container" class="container">
     <!--This is the “header" of the page, with the title and banner/logo-->
     <div id="top">
         <img id="logo" src="logo.png">
@@ -39,38 +39,39 @@
             <div id="schoolinfo"><h3>School Information</h3>
                 <div class="form-group">
                     <label>School</label>
-                    <input class="form-control" type="text"
-name="school" />
-                </div>
-                <div class="form-group">
-                    <label>Address</label>
-                    <input class="form-control" type="text"
-name="address" />
-                </div>
-                <div class="form-group">
-                    <label>City</label>
-                    <input class="form-control" type="text"
-name="city" />
-                </div>
-                <div class="form-group">
-                    <label>State</label>
-                    <input class="form-control" type="text"
-name="state" />
-                </div>
-                <div class="form-group">
-                    <label>Zip code</label>
-                    <input class="form-control" type="number"
-name="zip" />
+                    <input class="form-control" type="search"
+name="school" placeholder="Search" />
                 </div>
                 <div class="form-group">
                     <label>Division</label>
-                    <input class="form-control" type="text"
-name="division" />
                 </div>
-                <div class="form-group">
-                    <label>County</label>
-                    <input class="form-control" type="text"
-name="county" />
+                    <div class="col-md-4">
+                        <h3>Division 1</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nunc, molestie quis interdum sed, consequat nec elit. Sed a sem sed nulla scelerisque efficitur. Nunc a libero hendrerit, mollis augue rutrum, blandit felis. Donec sed nibh metus. Nulla mollis enim vel turpis tristique blandit. Aenean volutpat maximus commodo. Nam bibendum pharetra neque, sed convallis nunc imperdiet id. Nunc dapibus mi nunc, at dignissim ante mattis eu.
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Division 2</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nunc, molestie quis interdum sed, consequat nec elit. Sed a sem sed nulla scelerisque efficitur. Nunc a libero hendrerit, mollis augue rutrum, blandit felis. Donec sed nibh metus. Nulla mollis enim vel turpis tristique blandit. Aenean volutpat maximus commodo. Nam bibendum pharetra neque, sed convallis nunc imperdiet id. Nunc dapibus mi nunc, at dignissim ante mattis eu.
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Division 3</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nunc, molestie quis interdum sed, consequat nec elit. Sed a sem sed nulla scelerisque efficitur. Nunc a libero hendrerit, mollis augue rutrum, blandit felis. Donec sed nibh metus. Nulla mollis enim vel turpis tristique blandit. Aenean volutpat maximus commodo. Nam bibendum pharetra neque, sed convallis nunc imperdiet id. Nunc dapibus mi nunc, at dignissim ante mattis eu.
+                    </div>
+                <div id="selectDiv">
+                    <label>Select Division</label>
+                    <select>
+                       <option>Division 1</option>
+                    <option>Division 2</option>
+                    <option>Division 3</option>
+                    </select>
+                </div>
+                    <div id="selectTesting">
+                    <label>Select Testing Site</label>
+                    <select>
+                                 <option>Placeholder</option>
+                                 <option>Placeholder</option>
+                                 <option>Placeholder</option>
+                    </select>
                 </div>
 
             </div><!--End School Info-->
@@ -107,7 +108,7 @@ name="phone" />
                         </tr>
                         <tr>
 <!-- Come back and change min/maxlength to take any input and check for correctness with JS-->
-                            <td><label>Algebra</label></td>
+                            <td><label>Comprehensive</label></td>
                        <td><input class="form-control" type="number" 
 name="algebraqty" min="0" max="99" value = “0" /></td>
                             <td><label>x $5 =</label></td>
@@ -115,7 +116,7 @@ name="algebraqty" min="0" max="99" value = “0" /></td>
 name="algprice" min="0" max="99" value="0" readonly/></td>                     
                         </tr>
                         <tr>
-                            <td><label>Geometry</label></td>
+                            <td><label>Algebra II w/Trig</label></td>
                        <td><input class="form-control" type="number" 
 name="geometryqty" min="0" max="99" value="0"/></td>
                             <td><label>x $5 =</label></td>
@@ -123,7 +124,7 @@ name="geometryqty" min="0" max="99" value="0"/></td>
 name="geoprice" value="0" readonly /></td>                 
                         </tr>
                         <tr>
-                            <td><label>Calculus</label></td>
+                            <td><label>Geometry</label></td>
                        <td><input class="form-control" type="number" 
 name="calculusqty" min="0" max="99"  value="0"/></td>
                             <td><label>x $5 =</label></td>
@@ -131,7 +132,7 @@ name="calculusqty" min="0" max="99"  value="0"/></td>
 name="pricebox" value="0" readonly/></td>                      
                         </tr>
                         <tr>
-                            <td><label>Team Fee</label></td>
+                            <td><label>School Fee</label></td>
                        <td><input class="form-control" type="number" 
 name="teamfeeqty" value="1" readonly /></td>
                             <td><label>x $10 =</label></td>
@@ -160,6 +161,14 @@ name="total" value="10" readonly /></td>
 
     <!--This is the “footer" of the page, with copyright info etc...-->
     <div id="bottom">
+    <p>Please make your check for the above amount payable to <strong>Alabama Council of Teachers of Mathematics</strong>.<br>
+    Mail your check to:</p>
+    <p class="center">
+    University of North Alabama, Dept of Mathematics<br>
+    ATTN: AL HS Math Contest<br>
+    One Harrison Plaza, Box 5051<br>
+    Florence, AL 35632<br>
+    </p>
     </div>
 </div><!--End #container-->
 </body>
