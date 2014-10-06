@@ -1,3 +1,5 @@
+/*Tyler Yasaka, Victor Rogers, Ben Etheredge*/
+
 #container {
     max-width:960px;
     margin:auto;
@@ -18,4 +20,16 @@ h3 {
 
 #paymentsection input {
     max-width:75px;
+}
+
+#selectDiv {
+    text-align: center;
+}
+
+#selectTesting {
+    text-align: center;
+}
+
+.center {
+    text-align:center;
 }
