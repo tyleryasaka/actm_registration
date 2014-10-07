@@ -19,11 +19,7 @@ h4 {
 }
 
 #register {
-    text-align:center;
-}
-
-#register button {
-	margin:10px;
+    margin:25px auto;
 }
 
 #paymentsection input {
