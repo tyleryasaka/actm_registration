@@ -3,6 +3,9 @@ var total_sections=3;
 
 $(document).ready(function() {
 	toggleSection();
+	$('#mentor2').hide();
+	$('#mentor3').hide();
+	$('#mentor4').hide();
 });
 
 function nextSection() {
