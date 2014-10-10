@@ -1,5 +1,6 @@
 var current_section=1;
 var total_sections=3;
+var currentMentorsDisplayed=1;
 
 $(document).ready(function() {
 	toggleSection();
@@ -7,6 +8,24 @@ $(document).ready(function() {
 	$('#mentor3').hide();
 	$('#mentor4').hide();
 });
+
+function addMentor() {
+	if(currentMentorsDisplayed==1) {
+		$('#mentor2').show();
+		currentMentorsDisplayed++;
+	}
+	else if(currentMentorsDisplayed==2) {
+		$('#mentor3').show();
+		currentMentorsDisplayed++;
+	}
+	else if(currentMentorsDisplayed==3) {
+		$('#mentor4').show();
+		currentMentorsDisplayed++;
+	}
+	else if(currentMentorsDisplayed==4) {
+		alert('Sorry, only four mentors are allowed per team.');
+	}
+}
 
 function nextSection() {
     toggleSection();
