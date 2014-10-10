@@ -171,42 +171,51 @@
 							<!-- Come back and change min/maxlength to take any input and check for correctness with JS-->
                             <td><label>Comprehensive</label></td>
 							<td><input class="form-control" type="number" 
-							name="comprehensiveQty" min="0" max="99" value = "0"/></td>
+							name="comprehensiveQty" id="comprehensiveQty" 
+							min="0" max="99" value = "0"
+							onchange="updateComprehensivePrice()"/></td>
                             
 							<td><label>x $5 =</label></td>
 							<td><input class="form-control" type="number" 
-							name="comprehensivePrice" min="0" max="99" value="0" readonly /></td>                     
+							name="comprehensivePrice" id="comprehensivePrice"
+							min="0" max="99" value="0" readonly /></td>                     
                         </tr>
                         <tr>
                             <td><label>Algebra II w/Trig</label></td>
 							<td><input class="form-control" type="number" 
-							name="algebraIIQty" min="0" max="99" value="0"/></td>
+							name="algebraIIQty" id="algebraIIQty"
+							min="0" max="99" value="0"/></td>
                             <td><label>x $5 =</label></td>
 							<td><input class="form-control" type="number" 
-							name="algebraIIPrice" value="0" readonly /></td>                 
+							name="algebraIIPrice" id="algebraIIPrice"
+							value="0" readonly /></td>                 
                         </tr>
                         <tr>
                             <td><label>Geometry</label></td>
 							<td><input class="form-control" type="number" 
-							name="geometryQty" min="0" max="99"  value="0"/></td>
+							name="geometryQty" id="geometryQty"
+							min="0" max="99"  value="0"/></td>
                             <td><label>x $5 =</label></td>
 							<td><input class="form-control" type="number" 
-							name="geometryPrice" value="0" readonly /></td>                      
+							name="geometryPrice" name="geometryPrice"
+							value="0" readonly /></td>                      
                         </tr>
                         <tr>
                             <td><label>School Fee</label></td>
 							<td><input class="form-control" type="number" 
-							name="schoolFeeQty" value="1" readonly /></td>
+							name="schoolFeeQty" id="schoolFeeQty"
+							value="1" readonly /></td>
                             <td><label>x $10 =</label></td>
 							<td><input class="form-control" type="number" 
-							name="schoolFeePrice" value="10" readonly /></td>                      
+							name="schoolFeePrice" id="schoolFeePrice"
+							value="10" readonly /></td>                      
                         </tr>
                         <tr>
                             <td><label></label></td>
                             <td><label></label></td>
                             <td><label></label></td>
 							<td><input class="form-control" type="number" 
-							name="total" value="10" readonly /></td>                      
+							name="total" id="total" value="10" readonly /></td>                      
                         </tr>
                     </table>
                 </div>            
