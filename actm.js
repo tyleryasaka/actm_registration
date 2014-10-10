@@ -20,10 +20,7 @@ function addMentor() {
 	}
 	else if(currentMentorsDisplayed==3) {
 		$('#mentor4').show();
-		currentMentorsDisplayed++;
-	}
-	else if(currentMentorsDisplayed==4) {
-		alert('Sorry, only four mentors are allowed per team.');
+		$('#mentorButton').hide();
 	}
 }
 
