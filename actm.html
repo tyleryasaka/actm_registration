@@ -172,7 +172,7 @@
                             <td><label>Comprehensive</label></td>
 							<td><input class="form-control" type="number" 
 							name="comprehensiveQty" id="comprehensiveQty" 
-							min="0" max="99" value = "0"
+							min="0" max="99" value ="0"
 							onchange="updateComprehensivePrice()"/></td>
                             
 							<td><label>x $5 =</label></td>
@@ -184,8 +184,10 @@
                             <td><label>Algebra II w/Trig</label></td>
 							<td><input class="form-control" type="number" 
 							name="algebraIIQty" id="algebraIIQty"
-							min="0" max="99" value="0"/></td>
-                            <td><label>x $5 =</label></td>
+							min="0" max="99" value="0"
+							onchange="updateAlgebraIIPrice()"/></td>
+                            
+							<td><label>x $5 =</label></td>
 							<td><input class="form-control" type="number" 
 							name="algebraIIPrice" id="algebraIIPrice"
 							value="0" readonly /></td>                 
@@ -194,10 +196,12 @@
                             <td><label>Geometry</label></td>
 							<td><input class="form-control" type="number" 
 							name="geometryQty" id="geometryQty"
-							min="0" max="99"  value="0"/></td>
-                            <td><label>x $5 =</label></td>
+							min="0" max="99"  value="0"
+							onchange="updateGeometryPrice()"/></td>
+                            
+							<td><label>x $5 =</label></td>
 							<td><input class="form-control" type="number" 
-							name="geometryPrice" name="geometryPrice"
+							name="geometryPrice" id="geometryPrice"
 							value="0" readonly /></td>                      
                         </tr>
                         <tr>
@@ -205,7 +209,8 @@
 							<td><input class="form-control" type="number" 
 							name="schoolFeeQty" id="schoolFeeQty"
 							value="1" readonly /></td>
-                            <td><label>x $10 =</label></td>
+                            
+							<td><label>x $10 =</label></td>
 							<td><input class="form-control" type="number" 
 							name="schoolFeePrice" id="schoolFeePrice"
 							value="10" readonly /></td>                      

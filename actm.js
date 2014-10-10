@@ -27,6 +27,18 @@ function addMentor() {
 	}
 }
 
+function updateComprehensivePrice() {
+	$('#comprehensivePrice').val($('#comprehensiveQty').val() * 5);
+}
+
+function updateAlgebraIIPrice() {
+	$('#algebraIIPrice').val($('#algebraIIQty').val() * 5);
+}
+
+function updateGeometryPrice() {
+	$('#geometryPrice').val($('#geometryQty').val() * 5);
+}
+
 function nextSection() {
     toggleSection();
 	if(current_section==1) $('#register button#back').toggleClass('hide');
