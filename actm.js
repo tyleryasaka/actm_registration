@@ -18,6 +18,7 @@ function addMentor() {
 		$('#mentor3').show();
 		currentMentorsDisplayed++;
 	}
+	//"Add Mentor" button is hidden after fourth mentor is displayed
 	else if(currentMentorsDisplayed==3) {
 		$('#mentor4').show();
 		$('#mentorButton').hide();
@@ -25,15 +26,42 @@ function addMentor() {
 }
 
 function updateComprehensivePrice() {
-	$('#comprehensivePrice').val($('#comprehensiveQty').val() * 5);
+	//Checks to see if Qty value is increasing
+	if ($('#comprehensivePrice').val() < $('#comprehensiveQty').val() * 5) {
+		$('#comprehensivePrice').val($('#comprehensiveQty').val() * 5);
+		$('#total').val(parseInt($('#total').val()) + 5);
+	}
+	//Checks to see if Qty value is decreasing
+	else if ($('#comprehensivePrice').val() > $('#comprehensiveQty').val() * 5) {
+		$('#comprehensivePrice').val($('#comprehensiveQty').val() * 5)
+		$('#total').val(parseInt($('#total').val()) - 5);
+	}
 }
 
 function updateAlgebraIIPrice() {
-	$('#algebraIIPrice').val($('#algebraIIQty').val() * 5);
+	//Checks to see if Qty value is increasing
+	if ($('#algebraIIPrice').val() < $('#algebraIIQty').val() * 5) {
+		$('#algebraIIPrice').val($('#algebraIIQty').val() * 5);
+		$('#total').val(parseInt($('#total').val()) + 5);
+	}
+	//Checks to see if Qty value is decreasing
+	else if ($('#algebraIIPrice').val() > $('#algebraIIQty').val() * 5) {
+		$('#algebraIIPrice').val($('#algebraIIQty').val() * 5)
+		$('#total').val(parseInt($('#total').val()) - 5);
+	}
 }
 
 function updateGeometryPrice() {
-	$('#geometryPrice').val($('#geometryQty').val() * 5);
+	//Checks to see if Qty value is increasing
+	if ($('#geometryPrice').val() < $('#geometryQty').val() * 5) {
+		$('#geometryPrice').val($('#geometryQty').val() * 5);
+		$('#total').val(parseInt($('#total').val()) + 5);
+	}
+	//Checks to see if Qty value is decreasing
+	else if ($('#geometryPrice').val() > $('#geometryQty').val() * 5) {
+		$('#geometryPrice').val($('#geometryQty').val() * 5)
+		$('#total').val(parseInt($('#total').val()) - 5);
+	}
 }
 
 function nextSection() {
