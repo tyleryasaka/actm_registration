@@ -50,7 +50,8 @@ function prevSection() {
     //Jump to top of new form section
     $("html, body").scrollTop($('#toggle-container').offset().top);
 }
-	function toggleSection() {
+
+function toggleSection() {
     $('#toggle-container div:nth-child('+current_section+')').toggleClass('hide');
     $('#section-counter').html('Step '+current_section+' of '+total_sections);
 }
