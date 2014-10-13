@@ -19,7 +19,7 @@ function addMentor(){
 		currentMentorsDisplayed++;
 		var mentor_container = $('#mentorcontainer').html();
 		mentor_container +=
-						['<h4>Mentor '+currentMentorsDisplayed+'</h4>',
+						['<h4>Additional Mentor</h4>',
 						'<div class="form-group">',
                             '<label>Name</label>',
                             '<input class="form-control" type="text" ',
