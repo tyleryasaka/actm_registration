@@ -38,6 +38,7 @@ h4 {
     text-align:center;
 }
 
-.hide {
-	display:none;
+.error {
+	color:red;
+	padding:4px;
 }

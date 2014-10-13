@@ -1,87 +1,88 @@
-var current_section=1;
-var total_sections=3;
-var currentMentorsDisplayed=1;
+//Tyler Yasaka, Victor Rogers, Ben Etheredge
+
+var current_section=1, total_sections=3;
+var currentMentorsDisplayed=1, maxMentorsDisplayed=4;
+var tests = ['comprehensive','algebraII','geometry'];
+var schoolfee = 10;
 
 $(document).ready(function() {
+	//Hide sections to begin with.
+	for(var i=1;i<=total_sections;i++){
+		$('.section-'+i).hide();
+	}
+	$('#register button#back').hide();
 	toggleSection();
-	$('#mentor2').hide();
-	$('#mentor3').hide();
-	$('#mentor4').hide();
 });
 
-function addMentor() {
-	if(currentMentorsDisplayed==1) {
-		$('#mentor2').show();
+function addMentor(){
+	if(currentMentorsDisplayed <= maxMentorsDisplayed){
 		currentMentorsDisplayed++;
+		var mentor_container = $('#mentorcontainer').html();
+		mentor_container +=
+						['<h4>Mentor '+currentMentorsDisplayed+'</h4>',
+						'<div class="form-group">',
+                            '<label>Name</label>',
+                            '<input class="form-control" type="text" ',
+                            '    name="mentorname-'+currentMentorsDisplayed+'"/>',
+                        '</div>',
+                        '<div class="form-group">',
+                        '    <label>Email</label>',
+                        '    <input class="form-control" type="email"', 
+                        '        name="mentoremail-'+currentMentorsDisplayed+'"/>',
+                        '</div>',
+                        '<div class="form-group">',
+                        '    <label>Phone Number</label>',
+                        '    <input class="form-control" type="tel"', 
+                        '        name="mentorphone-'+currentMentorsDisplayed+'"/>',
+                        '</div>'
+		].join('\n');
+		$('#mentorcontainer').html(mentor_container);
 	}
-	else if(currentMentorsDisplayed==2) {
-		$('#mentor3').show();
-		currentMentorsDisplayed++;
-	}
-	//"Add Mentor" button is hidden after fourth mentor is displayed
-	else if(currentMentorsDisplayed==3) {
-		$('#mentor4').show();
+	if(currentMentorsDisplayed == maxMentorsDisplayed){
 		$('#mentorButton').hide();
 	}
 }
 
-function updateComprehensivePrice() {
-	//Checks to see if Qty value is increasing
-	if ($('#comprehensivePrice').val() < $('#comprehensiveQty').val() * 5) {
-		$('#comprehensivePrice').val($('#comprehensiveQty').val() * 5);
-		$('#total').val(parseInt($('#total').val()) + 5);
+function updatePrice(test) {
+	$('#'+test+'Price').val($('#'+test+'Qty').val() * 5);
+	//Initialize total with flat school fee
+	var total=schoolfee;
+	for(var i in tests){
+		total+=parseInt($('#'+tests[i]+'Price').val());
 	}
-	//Checks to see if Qty value is decreasing
-	else if ($('#comprehensivePrice').val() > $('#comprehensiveQty').val() * 5) {
-		$('#comprehensivePrice').val($('#comprehensiveQty').val() * 5)
-		$('#total').val(parseInt($('#total').val()) - 5);
-	}
+	$('#total').val(total);
 }
 
-function updateAlgebraIIPrice() {
-	//Checks to see if Qty value is increasing
-	if ($('#algebraIIPrice').val() < $('#algebraIIQty').val() * 5) {
-		$('#algebraIIPrice').val($('#algebraIIQty').val() * 5);
-		$('#total').val(parseInt($('#total').val()) + 5);
+function validatePayment(){
+	if( $('#comprehensiveQty').val() + $('#algebraIIQty').val() + $('#geometryQty').val() < 1){
+		$('#paymenterror').html('\nPlease select at least 1 test.');
+		return false;
 	}
-	//Checks to see if Qty value is decreasing
-	else if ($('#algebraIIPrice').val() > $('#algebraIIQty').val() * 5) {
-		$('#algebraIIPrice').val($('#algebraIIQty').val() * 5)
-		$('#total').val(parseInt($('#total').val()) - 5);
-	}
-}
-
-function updateGeometryPrice() {
-	//Checks to see if Qty value is increasing
-	if ($('#geometryPrice').val() < $('#geometryQty').val() * 5) {
-		$('#geometryPrice').val($('#geometryQty').val() * 5);
-		$('#total').val(parseInt($('#total').val()) + 5);
-	}
-	//Checks to see if Qty value is decreasing
-	else if ($('#geometryPrice').val() > $('#geometryQty').val() * 5) {
-		$('#geometryPrice').val($('#geometryQty').val() * 5)
-		$('#total').val(parseInt($('#total').val()) - 5);
-	}
+	else return true;
 }
 
 function nextSection() {
-    toggleSection();
-	if(current_section==1) $('#register button#back').toggleClass('hide');
-	if(current_section==total_sections-1) $('#register button#next').html('Register');
-	if(current_section==total_sections) {
-		//Submit registration form.
-		alert('We\'ll submit the registration form here.');
+	if($('.section-'+current_section+' input').valid()){
+		toggleSection();
+		if(current_section==1) $('#register button#back').toggle();
+		if(current_section==total_sections-1) $('#register button#next').html('Register');
+		if(current_section==total_sections) {
+			//Submit registration form.
+			if(validatePayment()) $('#mainform').submit();
+		}
+		if(current_section < total_sections) current_section+=1;
+		toggleSection();
+		//Jump to top of new form section
+		$("html, body").scrollTop($('#toggle-container').offset().top);
 	}
-    if(current_section<total_sections) current_section+=1;
-    toggleSection();
-    //Jump to top of new form section
-    $("html, body").scrollTop($('#toggle-container').offset().top);
+	//Jump to top of page to see errors
+	else $("html, body").scrollTop($('#toggle-container').offset().top);
 }
 
 function prevSection() {
     toggleSection();
 	if(current_section==total_sections) $('#register button#next').html('Next');
-	if(current_section==2) $('#register button#back').toggleClass('hide');
+	if(current_section==2) $('#register button#back').toggle();
     if(current_section>1) current_section-=1;
     toggleSection();
     //Jump to top of new form section
@@ -89,6 +90,6 @@ function prevSection() {
 }
 
 function toggleSection() {
-    $('#toggle-container div:nth-child('+current_section+')').toggleClass('hide');
+    $('#toggle-container div:nth-child('+current_section+')').toggle();
     $('#section-counter').html('Step '+current_section+' of '+total_sections);
 }

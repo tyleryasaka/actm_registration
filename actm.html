@@ -8,6 +8,9 @@
 
 	<!--Jquery-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
+	<!--Jquery Validator Plugin-->
+	<script src="jquery.validate.min.js"></script>
 
 	<!--Bootstrap-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -40,11 +43,11 @@
 			<div id="toggle-container">
 
             <!--This is the part of the form with school info.-->
-            <div id="schoolinfo" class="hide"><h3>School Information</h3>
+            <div id="schoolinfo" class="section-1"><h3>School Information</h3>
                 <div class="form-group">
                     <label>School</label>
                     <input class="form-control" type="search"
-					name="school" placeholder="Search" />
+					name="school" placeholder="Search" required="required"/>
                 </div>
                 <div class="form-group">
                     <label>Division</label>
@@ -81,84 +84,36 @@
             </div><!--End School Info-->
 
             <!--This is the part of the form with team info.-->
-            <div id="teaminfo" class="hide">
+            <div id="teaminfo" class="section-2">
 				<h3>Team Information</h3>
-                        <div class="form-group">
-                            <label>Mentor Name</label>
-                            <input class="form-control" type="text" 
-                                name="mentorname" />
+						<input name="mentorcount" type="hidden" value="0"/>
+						<h4>Mentor 1</h4>
+						<div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" type="text"
+                                name="mentorname-1" required="required"/>
                         </div>
-                        <div class="form-group">
+						<div class="form-group">
                             <label>Email</label>
-                            <input class="form-control" type="email" 
-                                name="email" />
+                            <input class="form-control" type="email"
+                                name="mentoremail-1" required="required"/>
                         </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input class="form-control" type="tel" 
-                                name="phone" />
+						<div class="form-group">
+                            <label>Phone</label>
+                            <input class="form-control" type="tel"
+                                name="mentorphone-1" required="required"/>
                         </div>
-                        
-                
-                <!-- Hidden Extra Mentor information -->
-                <div id="mentor2"><h4>Additional Mentor</h4>
-                        <div class="form-group">
-                            <label>Mentor Name</label>
-                            <input class="form-control" type="text" 
-                                name="mentorname" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input class="form-control" type="email" 
-                                name="email" />
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input class="form-control" type="tel" 
-                                name="phone" />
-                        </div>
-                </div>  
-                <div id="mentor3"><h4>Additional Mentor</h4>
-                        <div class="form-group">
-                            <label>Mentor Name</label>
-                            <input class="form-control" type="text" 
-                                name="mentorname" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input class="form-control" type="email" 
-                                name="email" />
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input class="form-control" type="tel" 
-                                name="phone" />
-                        </div>
-                </div>    
-                <div id="mentor4"><h4>Additional Mentor</h4>
-                        <div class="form-group">
-                            <label>Mentor Name</label>
-                            <input class="form-control" type="text" 
-                                name="mentorname" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input class="form-control" type="email" 
-                                name="email" />
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input class="form-control" type="tel" 
-                                name="phone" />
-                        </div>
-                </div>
+						<div id="mentorcontainer">
+							<!--Added Mentors will go here-->
+						</div>
 				<button type ="button" class="btn btn-default" 
 				id="mentorButton" onclick="addMentor()">Add Mentor</button>
             </div><!--End Team Info-->
 
             <!--This is the part of the form with payment info.-->
-            <div id="paymentsection" class="hide"><h3>Payment Information</h3>
-                <div class="table-responsive">            
+            <div id="paymentsection" class="section-3">
+				<h3>Payment Information</h3>
+                <div class="table-responsive">
                     <table class="table">
                         <tr>
                             <td><label>Type</label></td>
@@ -172,7 +127,7 @@
 							<td><input class="form-control" type="number" 
 							name="comprehensiveQty" id="comprehensiveQty" 
 							min="0" max="99" value ="0"
-							oninput="updateComprehensivePrice()"/></td>
+							oninput="updatePrice('comprehensive')"/></td>
                             
 							<td><label>x $5 =</label></td>
 							<td><input class="form-control" type="number" 
@@ -184,7 +139,7 @@
 							<td><input class="form-control" type="number" 
 							name="algebraIIQty" id="algebraIIQty"
 							min="0" max="99" value="0"
-							oninput="updateAlgebraIIPrice()"/></td>
+							oninput="updatePrice('algebraII')"/></td>
                             
 							<td><label>x $5 =</label></td>
 							<td><input class="form-control" type="number" 
@@ -196,7 +151,7 @@
 							<td><input class="form-control" type="number" 
 							name="geometryQty" id="geometryQty"
 							min="0" max="99"  value="0"
-							oninput="updateGeometryPrice()"/></td>
+							oninput="updatePrice('geometry')"/></td>
                             
 							<td><label>x $5 =</label></td>
 							<td><input class="form-control" type="number" 
@@ -215,7 +170,7 @@
 							value="10" readonly /></td>                      
                         </tr>
                         <tr>
-                            <td><label></label></td>
+                            <td><label>Total</label></td>
                             <td><label></label></td>
                             <td><label></label></td>
 							<td><input class="form-control" type="number" 
@@ -223,6 +178,7 @@
                         </tr>
                     </table>
                 </div>            
+				<h4 id="paymenterror" class="error"></h4>
             </div><!--End payment section-->
             
             </div><!--End #toggle-container-->
@@ -233,7 +189,7 @@
 
 	<div id="register" class="form-group center">
 		<h4 id="section-counter" class="center"></h4>
-		<button id="back" class="btn btn-primary btn-lg hide" onclick="prevSection()">Back</button>
+		<button id="back" class="btn btn-primary btn-lg" onclick="prevSection()">Back</button>
 		<button id="next" class="btn btn-primary btn-lg" onclick="nextSection()">Next</button>
 	</div>
 
