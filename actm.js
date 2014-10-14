@@ -135,8 +135,13 @@ function sectionValidate(){
 	}
 	//Custom validate page 3
 	if(current_section==3){
+		//I call this function separately because it uses a different validation function.
+		//Due to the way JS evaluates truth statements, this ensures that the function is actually
+		//called every time. Thus the error message used by this function will display and hide appropriately.
+		var payment_validated=validatePayment();
 		//Call desired validation functions
-		OK=(itemValidate('comprehensiveQty', /[0-9]+/)&&
+		OK=(payment_validated&&
+			itemValidate('comprehensiveQty', /[0-9]+/)&&
 			itemValidate('algebraIIQty', /[0-9]+/)&&
 			itemValidate('geometryQty', /[0-9]+/));
 	}
@@ -157,6 +162,8 @@ function validatePayment(){
 		$('#paymenterror').html('\nPlease select at least 1 test.');
 		OK = false;
 	}
+	//Reset the error message.
+	else $('#paymenterror').html('');
 	return OK;
 }
 
@@ -168,20 +175,25 @@ function validatePayment(){
 // Programmer: 
 function nextSection() {
 	if(sectionValidate()){
+		//Reset the error message at top of page.
+		$('#sectionerror').html('');
 		toggleSection();
 		if(current_section==1) $('#register button#back').toggle();
 		if(current_section==total_sections-1) $('#register button#next').html('Register');
 		if(current_section==total_sections) {
 			//Submit registration form.
-			if(validatePayment()) $('#mainform').submit();
+			$('#mainform').submit();
 		}
 		if(current_section < total_sections) current_section+=1;
 		toggleSection();
 		//Jump to top of new form section
 		$("html, body").scrollTop($('#toggle-container').offset().top);
 	}
-	//Jump to top of page to see errors
-	else $("html, body").scrollTop($('#toggle-container').offset().top);
+	else {
+		//Display error message at top of page, jump to this message.
+		$('#sectionerror').html('<h4 class="error">Please fix the errors on this page.</h4>');
+		$("html, body").scrollTop($('#sectionerror').offset().top);
+	}
 }
 
 // Function Name: 
