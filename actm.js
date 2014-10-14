@@ -121,15 +121,24 @@ function removeError(id){
 function sectionValidate(){
 	//Ok by default
 	var OK = true;
+	//Custom validate for page 1
+	if(current_section==1){
+		//Call desired validation functions
+		OK=itemValidate('school', /./);
+	}
 	//Custom validate for page 2
 	if(current_section==2){
 		//Call desired validation functions
-		OK=(itemValidate());
+		OK=(itemValidate('mentorname-1', /./)&&
+			itemValidate('mentoremail-1', /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)&&
+			itemValidate('mentorphone-1', /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/));
 	}
 	//Custom validate page 3
 	if(current_section==3){
-		//Functions
-		OK=(validatePayement());
+		//Call desired validation functions
+		OK=(itemValidate('comprehensiveQty', /[0-9]+/)&&
+			itemValidate('algebraIIQty', /[0-9]+/)&&
+			itemValidate('geometryQty', /[0-9]+/));
 	}
 	return OK;
 }
@@ -146,7 +155,7 @@ function validatePayment(){
 	OK = true
 	if( $('#comprehensiveQty').val() + $('#algebraIIQty').val() + $('#geometryQty').val() < 1){
 		$('#paymenterror').html('\nPlease select at least 1 test.');
-		OK = false
+		OK = false;
 	}
 	return OK;
 }
