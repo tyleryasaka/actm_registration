@@ -1,10 +1,18 @@
 //Tyler Yasaka, Victor Rogers, Ben Etheredge
 
+
 var current_section=1, total_sections=3;
 var currentMentorsDisplayed=1, maxMentorsDisplayed=4;
 var tests = ['comprehensive','algebraII','geometry'];
 var schoolfee = 10;
 
+
+// Function Name: 
+// Inputs  :
+// Outputs :
+// Return  :
+// Description:
+// Programmer: 
 $(document).ready(function() {
 	//Hide sections to begin with.
 	for(var i=1;i<=total_sections;i++){
@@ -14,6 +22,12 @@ $(document).ready(function() {
 	toggleSection();
 });
 
+// Function Name: addMentor
+// Inputs  : NONE
+// Outputs : div - container of additional mentor form slots
+// Return  : NONE
+// Description: adds an addition form area for additional mentor information
+// Programmer: 
 function addMentor(){
 	if(currentMentorsDisplayed <= maxMentorsDisplayed){
 		currentMentorsDisplayed++;
@@ -43,6 +57,12 @@ function addMentor(){
 	}
 }
 
+// Function Name: updatePrice
+// Inputs  : string - id/name of input element
+// Outputs : Updates price field
+// Return  : NONE
+// Description: Calculates and updates price field calling it
+// Programmer: 
 function updatePrice(test) {
 	$('#'+test+'Price').val($('#'+test+'Qty').val() * 5);
 	//Initialize total with flat school fee
@@ -53,6 +73,14 @@ function updatePrice(test) {
 	$('#total').val(total);
 }
 
+// Function Name: itemValidate
+// Inputs  : string - id of element
+//			 regex - pattern for regular expression
+// Outputs : 
+// Return  : function = re.test(item)
+// Description: Checks for the validity of the input id against the
+//				input regular expression
+// Programmer: 
 function itemValidate(id, regex){
 	var item = $('#'+id).val();
 	var re = regex;
@@ -65,13 +93,31 @@ function itemValidate(id, regex){
 	return re.test(item);
 }
 
+// Function Name: displayError
+// Inputs  : string - id of element
+// Outputs :
+// Return  :
+// Description:
+// Programmer: 
 function displayError(id){
 	$('#'+id).parent().addClass('has-error');}
 
+// Function Name: removeError
+// Inputs  : string - id of element
+// Outputs :
+// Return  :
+// Description:
+// Programmer: 
 function removeError(id){
 	$('#'+id).parent().removeClass('has-error');
 }
 
+// Function Name: sectionValidate
+// Inputs  : NONE
+// Outputs :
+// Return  : boolean - is input is valid
+// Description:
+// Programmer: 
 function sectionValidate(){
 	//Ok by default
 	var OK = true;
@@ -90,14 +136,27 @@ function sectionValidate(){
 
 
 
+// Function Name: 
+// Inputs  :
+// Outputs :
+// Return  :
+// Description: 
+// Programmer: 
 function validatePayment(){
+	OK = true
 	if( $('#comprehensiveQty').val() + $('#algebraIIQty').val() + $('#geometryQty').val() < 1){
 		$('#paymenterror').html('\nPlease select at least 1 test.');
-		return false;
+		OK = false
 	}
-	else return true;
+	return OK;
 }
 
+// Function Name: nextSection
+// Inputs  : NONE
+// Outputs :
+// Return  :
+// Description:
+// Programmer: 
 function nextSection() {
 	if(sectionValidate()){
 		toggleSection();
@@ -116,6 +175,12 @@ function nextSection() {
 	else $("html, body").scrollTop($('#toggle-container').offset().top);
 }
 
+// Function Name: 
+// Inputs  :
+// Outputs :
+// Return  :
+// Description:
+// Programmer: 
 function prevSection() {
     toggleSection();
 	if(current_section==total_sections) $('#register button#next').html('Next');
@@ -126,6 +191,12 @@ function prevSection() {
     $("html, body").scrollTop($('#toggle-container').offset().top);
 }
 
+// Function Name: 
+// Inputs  :
+// Outputs :
+// Return  :
+// Description:
+// Programmer: 
 function toggleSection() {
     $('#toggle-container div:nth-child('+current_section+')').toggle();
     $('#section-counter').html('Step '+current_section+' of '+total_sections);
