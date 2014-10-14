@@ -154,7 +154,7 @@ function sectionValidate(){
 // Inputs  :
 // Outputs :
 // Return  :
-// Description: 
+// Description: This requires custom validation because it depends on multiple inputs and needs to display an error message.
 // Programmer: 
 function validatePayment(){
 	OK = true
