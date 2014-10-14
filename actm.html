@@ -93,7 +93,9 @@
 						<div class="form-group">
                             <label>Email</label>
                             <input class="form-control" type="email"
-                                name="mentoremail-1" required="required"/>
+                                name="mentoremail-1" id="mentoremail-1"
+								onblur="itemValidate('mentoremail-1', /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)"
+								required="required"/>
                         </div>
 						<div class="form-group">
                             <label>Phone</label>
