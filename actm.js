@@ -53,6 +53,43 @@ function updatePrice(test) {
 	$('#total').val(total);
 }
 
+function itemValidate(id, regex){
+	var item = $('#'+id).val();
+	var re = regex;
+	if (!re.test(item)){
+		displayError(id);
+	}
+	else {
+		removeError(id);
+	}
+	return re.test(item);
+}
+
+function displayError(id){
+	$('#'+id).parent().addClass('has-error');}
+
+function removeError(id){
+	$('#'+id).parent().removeClass('has-error');
+}
+
+function sectionValidate(){
+	//Ok by default
+	var OK = true;
+	//Custom validate for page 2
+	if(current_section==2){
+		//Call desired validation functions
+		OK=(itemValidate());
+	}
+	//Custom validate page 3
+	if(current_section==3){
+		//Functions
+		OK=(validatePayement());
+	}
+	return OK;
+}
+
+
+
 function validatePayment(){
 	if( $('#comprehensiveQty').val() + $('#algebraIIQty').val() + $('#geometryQty').val() < 1){
 		$('#paymenterror').html('\nPlease select at least 1 test.');
@@ -62,7 +99,7 @@ function validatePayment(){
 }
 
 function nextSection() {
-	if($('.section-'+current_section+' input').valid()){
+	if(sectionValidate()){
 		toggleSection();
 		if(current_section==1) $('#register button#back').toggle();
 		if(current_section==total_sections-1) $('#register button#next').html('Register');
