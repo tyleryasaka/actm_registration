@@ -133,7 +133,7 @@
                             <td><label>Comprehensive</label></td>
 							<td><input class="form-control" type="number" 
 							name="comprehensiveQty" id="comprehensiveQty" 
-							min="0" max="99" value ="0" oninput="itemValidate('comprehensiveQty', /[0-9]+/);
+							min="0" max="99" value ="0" oninput="itemValidate('comprehensiveQty', /^[0-9]{1,2}$/);
 							updatePrice('comprehensive')"/></td>
                             
 							<td><label>x $5 =</label></td>
@@ -145,7 +145,7 @@
                             <td><label>Algebra II w/Trig</label></td>
 							<td><input class="form-control" type="number" 
 							name="algebraIIQty" id="algebraIIQty"
-							min="0" max="99" value="0" oninput="itemValidate('algebraIIQty', /[0-9]+/);
+							min="0" max="99" value="0" oninput="itemValidate('algebraIIQty', /^[0-9]{1,2}$/);
 							updatePrice('algebraII')"/></td>
                             
 							<td><label>x $5 =</label></td>
@@ -157,7 +157,7 @@
                             <td><label>Geometry</label></td>
 							<td><input class="form-control" type="number" 
 							name="geometryQty" id="geometryQty"
-							min="0" max="99"  value="0" oninput="itemValidate('geometryQty', /[0-9]+/);
+							min="0" max="99"  value="0" oninput="itemValidate('geometryQty', /^[0-9]{1,2}$/);
 							updatePrice('geometry')"/></td>
                             
 							<td><label>x $5 =</label></td>
