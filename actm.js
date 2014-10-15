@@ -124,26 +124,28 @@ function sectionValidate(){
 	//Custom validate for page 1
 	if(current_section==1){
 		//Call desired validation functions
-		OK=itemValidate('school', /./);
+		var school=itemValidate('school', /./);
+		//I call these functions separately because JS will not evaluate all statements if just 1 is false
+		OK=(school);
 	}
 	//Custom validate for page 2
 	if(current_section==2){
 		//Call desired validation functions
-		OK=(itemValidate('mentorname-1', /./)&&
-			itemValidate('mentoremail-1', /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)&&
-			itemValidate('mentorphone-1', /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/));
+		var mentorname=itemValidate('mentorname-1', /./);
+		var mentoremail=itemValidate('mentoremail-1', /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+		var mentorphone=itemValidate('mentorphone-1', /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)
+		//I call these functions separately because JS will not evaluate all statements if just 1 is false
+		OK=(mentorname&&mentoremail&&mentorphone);
 	}
 	//Custom validate page 3
 	if(current_section==3){
-		//I call this function separately because it uses a different validation function.
-		//Due to the way JS evaluates truth statements, this ensures that the function is actually
-		//called every time. Thus the error message used by this function will display and hide appropriately.
-		var payment_validated=validatePayment();
 		//Call desired validation functions
-		OK=(payment_validated&&
-			itemValidate('comprehensiveQty', /[0-9]+/)&&
-			itemValidate('algebraIIQty', /[0-9]+/)&&
-			itemValidate('geometryQty', /[0-9]+/));
+		var payment_validated=validatePayment();
+		var comprehensive=itemValidate('comprehensiveQty', /^[0-9]{1,2}$/);
+		var algebraII=itemValidate('algebraIIQty', /^[0-9]{1,2}$/);
+		var geometry=itemValidate('geometryQty', /^[0-9]{1,2}$/);
+		//I call these functions separately because JS will not evaluate all statements if just 1 is false
+		OK=(payment_validated&&comprehensive&&algebraII&&geometry);
 	}
 	return OK;
 }
