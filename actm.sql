@@ -6,8 +6,11 @@ use actm;
 create table schools(
 	school_id int(11) AUTO_INCREMENT,
 	name varchar(64) NOT NULL,
-	address_lines varchar(60) NOT NULL,
-#	probably need to separte address out. depends on data
+	
+	address_street varchar(64) NOT NULL,
+	address_city varchar(64) NOT NULL,
+	address_state char(2) NOT NULL,
+	address_zip int(5) NOT NULL, #should we plan for extended zip codes?
 	
 
 	PRIMARY KEY(school_id)
