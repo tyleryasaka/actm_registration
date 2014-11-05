@@ -1,4 +1,5 @@
 # actm.sql
+drop database actm;
 create database actm;
 use actm;
 
