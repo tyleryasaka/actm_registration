@@ -41,7 +41,7 @@ create table mentors (
 	phone_number int(11) NOT NULL,
 	entry_id int(11) NOT NULL,
 	PRIMARY KEY(mentor_id),
-	FOREIGN KEY(entry_id) references entries(entry_id)
+	FOREIGN KEY(entry_id) references entries(entry_id) #ON UPDATE CASECADE something something
 )ENGINE=InnoDB default CHARSET=ucs2;
 
 	
