@@ -30,14 +30,17 @@ create table mentors (
 
 create table teams(
 	entry_id int(11) AUTO_INCREMENT,
+	school_id int(11) NOT NULL,
+	mentor_id int(11) NOT NULL,
+	
 	division int(1) NOT NULL,
+	 
 	
 	site varchar(64) NOT NULL, #not sure what the data will be
 	
 	comprehensive int(4), 
 	algebraII int(4),
 	geometry int(4),
-	school_id int(11),
 	
 	PRIMARY KEY(entry_id),
 	FOREIGN KEY(mentor_id) REFERENCES mentors(mentor_id),
