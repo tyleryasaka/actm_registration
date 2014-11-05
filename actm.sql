@@ -40,7 +40,7 @@ create table teams(
 	school_id int(11),
 	
 	PRIMARY KEY(entry_id),
-	FOREIGN KEY(mentor_id) REFERENCES mentors(mentor_id)
+	FOREIGN KEY(mentor_id) REFERENCES mentors(mentor_id),
 	FOREIGN KEY(school_id) references schools(school_id)
 )ENGINE=InnoDB default CHARSET=ucs2;
 
