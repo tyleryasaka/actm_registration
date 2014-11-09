@@ -16,9 +16,10 @@ $mentorCount = filter_input(INPUT_POST, "mentorcount", FILTER_SANITIZE_NUMBER_IN
 
 //Get all of the mentors
 for($i=0;$i<$mentorCount;$i++){
-	$mentorNames[$i] = filter_input(INPUT_POST, "mentorname-$i", FILTER_SANITIZE_SPECIAL_CHARS);
-	$mentorEmails[$i] = filter_input(INPUT_POST, "mentoremail-$i", FILTER_SANITIZE_EMAIL);
-	$mentorPhones[$i] = filter_input(INPUT_POST, "mentorphone-$i", FILTER_SANITIZE_NUMBER_INT);
+	$j = $i+1;
+	$mentorNames[] = filter_input(INPUT_POST, "mentorname-$j", FILTER_SANITIZE_SPECIAL_CHARS);
+	$mentorEmails[] = filter_input(INPUT_POST, "mentoremail-$j", FILTER_SANITIZE_EMAIL);
+	$mentorPhones[] = filter_input(INPUT_POST, "mentorphone-$j", FILTER_SANITIZE_NUMBER_INT);
 }
 
 // Test Purchase Information
@@ -34,8 +35,10 @@ $geometryPrice = $geometryQty * 5;
 $totalPrice = $comprehensivePrice + $algebraIIPrice + $geometryPrice + $schoolFee;
 
 // Email Response
+$from = 'jajerkins@una.edu';
 $subject = "2014 Alabama Statewide High School Mathematics Contest";
-$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers = "From: $from\r\n";
+$headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $emailResponseMessage = <<<HTML
 	<!DOCTYPE HTML>
@@ -60,7 +63,7 @@ $emailResponseMessage = <<<HTML
 	</html>
 HTML;
 
-mail($mentorEmails[1], $subject, $emailResponseMessage, $headers);
+mail($mentorEmails[0], $subject, $emailResponseMessage, $headers);
 
 // Submission Page
 require 'template/header.php';
