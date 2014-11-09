@@ -1,43 +1,11 @@
-<!DOCTYPE HTML>
-<html lang ="en">
-<head>
-	<!--Coded by Tyler Yasaka, Victor Rogers, Ben Etheredge-->
-    <meta charset="UTF-8">
-	<meta name="AUTHOR" content="Tyler Yasaka, Victor Rogers, Ben Etheredge">
-	<title>Alabama Statewide High School Mathematics Contest Online Registration</title>
-
-	<!--Jquery-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	
-	<!--Bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-	<!--Custom JS-->
-	<script src="actm.js"></script>
-
-	<!--CSS-->
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
-<div id="container" class="container">
-    <!--This is the header of the page, with the title and banner/logo-->
-    <div id="top">
-        <img id="logo" alt="Alabama Council of Teachers of Mathematics" src="logo.png">
-        <h1>Alabama Statewide <br> High School Mathematics Contest</h1>
-        <h4>Registration Form</h4>
-    </div>
-
-    <div class="clear"></div>
+<?php require 'template/header.php'; ?>
 
     <!--This is the main content of the page.-->
     <div id="maincontent">
-
+		
 		<div id="sectionerror"></div>
 	
-        <form id="mainform" action="actm.php" method="post">
+        <form id="mainform" action="submission.php" method="post">
 
 			<div id="toggle-container">
 
@@ -199,17 +167,4 @@
 		<button id="next" class="btn btn-primary btn-lg" onclick="nextSection()">Next</button>
 	</div>
 
-    <!--I'm Commenting this part out for now... I think it should be displayed *after* registration.-->
-    <!--<div id="bottom">
-    <p>Please make your check for the above amount payable to <strong>Alabama Council of Teachers of Mathematics</strong>.<br>
-    Mail your check to:</p>
-    <p class="center">
-    University of North Alabama, Dept of Mathematics<br>
-    ATTN: AL HS Math Contest<br>
-    One Harrison Plaza, Box 5051<br>
-    Florence, AL 35632<br>
-    </p>
-    </div>-->
-</div><!--End #container-->
-</body>
-</html>
+<?php require 'template/footer.php'; ?>

@@ -183,6 +183,8 @@ function nextSection() {
 		if(current_section==1) $('#register button#back').toggle();
 		if(current_section==total_sections-1) $('#register button#next').html('Register');
 		if(current_section==total_sections) {
+			//Update mentorcount for php
+			$('input[name="mentorcount"]').val(currentMentorsDisplayed);
 			//Submit registration form.
 			$('#mainform').submit();
 		}
