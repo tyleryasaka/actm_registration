@@ -10,12 +10,17 @@
     text-align:center;
 }
 
+#logo {
+	width:100px;
+}
+
 h3 {
     color:#05388B;
 }
 
 h4 {
     color:#05388B;
+    margin-top:20px;
 }
 
 #register {

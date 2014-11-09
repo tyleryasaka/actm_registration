@@ -1,6 +1,5 @@
 //Tyler Yasaka, Victor Rogers, Ben Etheredge
 
-
 var current_section=1, total_sections=3;
 var currentMentorsDisplayed=1, maxMentorsDisplayed=4;
 var tests = ['comprehensive','algebraII','geometry'];
@@ -20,6 +19,23 @@ $(document).ready(function() {
 	}
 	$('#register button#back').hide();
 	toggleSection();
+	//Initialize typeahead for school search functionality
+	var typeaheadSource = [
+		{ name: 'Bradshaw High School', id: '1', street: '2234 Blah', city: 'Huntsville', state: 'AL', zip: '35630' },
+		{ name: 'Florence High School', id: '2', street: '7234 Blah', city: 'Florence', state: 'AL', zip: '33333' },
+		{ name: 'Creekside Academy', id: '3', street: '111 Blah', city: 'Auburn', state: 'AL', zip: '37885' },
+	];
+	$('input#school').typeahead({
+		source: typeaheadSource,
+		onSelect: function(item) {
+			$('#street').val(item.street);
+			$('#city').val(item.city);
+			$('#state').val(item.state);
+			$('#zip').val(item.zip);
+			//Validate fields since they are being changed
+			sectionValidate();
+		}
+	});
 });
 
 // Function Name: addMentor
@@ -125,8 +141,12 @@ function sectionValidate(){
 	if(current_section==1){
 		//Call desired validation functions
 		var school=itemValidate('school', /./);
+		var street=itemValidate('street', /./);
+		var city=itemValidate('city', /./);
+		var state=itemValidate('state', /^[A-Za-z]{2}$/);
+		var zip=itemValidate('zip', /^\d{5}$/);
 		//I call these functions separately because JS will not evaluate all statements if just 1 is false
-		OK=(school);
+		OK=(school && street && city && state && zip);
 	}
 	//Custom validate for page 2
 	if(current_section==2){

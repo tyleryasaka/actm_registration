@@ -18,18 +18,42 @@
 					placeholder="Search" required="required"/>
                 </div>
                 <div class="form-group">
-                    <label>Division</label>
+                    <label>School Address</label>
+                    <input class="form-control" type="text"
+					name="street" id="street" oninput="itemValidate('street', /./)" 
+					placeholder="Street" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input class="form-control" type="text"
+					name="city" id="city" oninput="itemValidate('city', /./)" 
+					placeholder="City" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label>State</label>
+                    <input class="form-control" type="text"
+					name="state" id="state" oninput="itemValidate('state', /^[A-Za-z]{2}$/)" 
+					placeholder="AL" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label>Zip</label>
+                    <input class="form-control" type="number"
+					name="zip" id="zip" oninput="itemValidate('zip', /^\d{5}$/)" 
+					placeholder="55555" required="required"/>
+                </div>
+                <div class="form-group">
+                    <h3>Division</h3>
                 </div>
                     <div class="col-md-4">
-                        <h3>Division 1</h3>
+                        <h4>Division 1</h4>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nunc, molestie quis interdum sed, consequat nec elit. Sed a sem sed nulla scelerisque efficitur. Nunc a libero hendrerit, mollis augue rutrum, blandit felis. Donec sed nibh metus. Nulla mollis enim vel turpis tristique blandit. Aenean volutpat maximus commodo. Nam bibendum pharetra neque, sed convallis nunc imperdiet id. Nunc dapibus mi nunc, at dignissim ante mattis eu.
                     </div>
                     <div class="col-md-4">
-                        <h3>Division 2</h3>
+                        <h4>Division 2</h4>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nunc, molestie quis interdum sed, consequat nec elit. Sed a sem sed nulla scelerisque efficitur. Nunc a libero hendrerit, mollis augue rutrum, blandit felis. Donec sed nibh metus. Nulla mollis enim vel turpis tristique blandit. Aenean volutpat maximus commodo. Nam bibendum pharetra neque, sed convallis nunc imperdiet id. Nunc dapibus mi nunc, at dignissim ante mattis eu.
                     </div>
                     <div class="col-md-4">
-                        <h3>Division 3</h3>
+                        <h4>Division 3</h4>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nunc, molestie quis interdum sed, consequat nec elit. Sed a sem sed nulla scelerisque efficitur. Nunc a libero hendrerit, mollis augue rutrum, blandit felis. Donec sed nibh metus. Nulla mollis enim vel turpis tristique blandit. Aenean volutpat maximus commodo. Nam bibendum pharetra neque, sed convallis nunc imperdiet id. Nunc dapibus mi nunc, at dignissim ante mattis eu.
                     </div>
                 <div id="selectDiv">
@@ -40,13 +64,14 @@
                                 <option>Division 3</option>
                         </select>
                 </div>
+                <h3>Testing Site</h3>
                 <div id="selectTesting">
                         <label>Select Testing Site</label>
-		        <select  class="form-control" name="selectTestingSite">
-		                <option>Placeholder</option>
-		                <option>Placeholder</option>
-		                <option>Placeholder</option>
-                        </select>
+						<select class="form-control" name="selectTestingSite">
+							<option value="placeholder">Placeholder</option>
+							<option value="placeholder">Placeholder</option>
+							<option value="placeholder">Placeholder</option>
+						</select>
                 </div>
 
             </div><!--End School Info-->
@@ -161,8 +186,8 @@
 
     </div><!--End #maincontent-->
 
-	<div id="register" class="form-group center">
-		<h4 id="section-counter" class="center"></h4>
+	<div id="register" class="form-group text-center">
+		<h4 id="section-counter"></h4>
 		<button id="back" class="btn btn-primary btn-lg" onclick="prevSection()">Back</button>
 		<button id="next" class="btn btn-primary btn-lg" onclick="nextSection()">Next</button>
 	</div>
