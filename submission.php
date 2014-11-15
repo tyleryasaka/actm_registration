@@ -1,7 +1,14 @@
 <?php
 
-//Make sure there is post data
+// Make sure there is post data
 if(isset($_POST['school'])){
+
+// Establish database connection
+$servername = "localhost";
+$username = "actm";
+$password = "4034df8b";
+$conn = mysqli_connect($servername, $username, $password);
+mysqli_select_db($conn,'actm');
 
 // School / Test site Information
 $school = filter_input(INPUT_POST, 'school', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -38,6 +45,25 @@ $algebraIIPrice = $algebraIIQty * 5;
 $geometryPrice = $geometryQty * 5;
 $totalPrice = $comprehensivePrice + $algebraIIPrice + $geometryPrice + $schoolFee;
 
+// Insert team data into database
+$teams_query = "INSERT INTO teams (school_name,school_address_street,school_address_city,
+			school_address_state,school_address_zip,division,site,comprehensive,
+			algebraII,geometry) VALUES ('$school','$street','$city',
+			'$state','$zip','$division','$testSite','$comprehensiveQty',
+			'$algebraIIQty','$geometryQty')";
+mysqli_query($conn,$teams_query);
+
+// Get auto generated team id
+$team_id = mysqli_insert_id($conn);
+
+// insert each mentor into database
+for($i=0;$i<$mentorCount;$i++){
+	$mentors_query = "INSERT INTO mentors (team_id,name,email,phone_number)
+						VALUES ('$team_id','$mentorNames[$i]','$mentorEmails[$i]','$mentorPhones[$i]')";
+	mysqli_query($conn,$mentors_query);
+}
+mysqli_close($conn);//ends database connection
+
 // Email Response
 $from = 'jajerkins@una.edu';
 $subject = "2014 Alabama Statewide High School Mathematics Contest";
@@ -45,7 +71,7 @@ $headers = "From: $from\r\n";
 $headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
-//This is used for both the email and the html output page.
+// This is used for both the email and the html output page.
 $confirmationMessage = <<<HTML
 				<h2>Thank you for your registering!</h2>
 				<h3>Grand Total: $$totalPrice </h3>
@@ -61,7 +87,7 @@ $confirmationMessage = <<<HTML
 				<h4>School</h4>
 				<p><strong>$school</strong></p>
 				<p>$street<br>$city, $state $zip</p>
-				<p><strong>$division</strong></p>
+				<p><strong>Division $division</strong></p>
 				<p>Testing Site: <strong>$testSite</strong></p>
 				<h4>Mentors</h4>
 				<table class="table" cellpadding="10">
@@ -101,7 +127,7 @@ require 'template/footer.php';
 
 }
 
-//If no post data, redirect to index page
+// If no post data, redirect to index page
 else header('location: index.php');
 
 ?>

@@ -20,13 +20,7 @@ $(document).ready(function() {
 	$('#register button#back').hide();
 	toggleSection();
 	//Initialize typeahead for school search functionality
-	var typeaheadSource = [
-		{ name: 'Bradshaw High School', id: '1', street: '2234 Blah', city: 'Huntsville', state: 'AL', zip: '35630' },
-		{ name: 'Florence High School', id: '2', street: '7234 Blah', city: 'Florence', state: 'AL', zip: '33333' },
-		{ name: 'Creekside Academy', id: '3', street: '111 Blah', city: 'Auburn', state: 'AL', zip: '37885' },
-	];
 	$('input#school').typeahead({
-		source: typeaheadSource,
 		onSelect: function(item) {
 			$('#street').val(item.street);
 			$('#city').val(item.city);
@@ -34,7 +28,8 @@ $(document).ready(function() {
 			$('#zip').val(item.zip);
 			//Validate fields since they are being changed
 			sectionValidate();
-		}
+		},
+		ajax: 'schools.php'
 	});
 });
 

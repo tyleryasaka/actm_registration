@@ -59,9 +59,9 @@
                 <div id="selectDiv">
                         <label>Select Division</label>
                         <select class="form-control" name="selectDivision">
-                                <option>Division 1</option>
-                                <option>Division 2</option>
-                                <option>Division 3</option>
+                                <option value="1">Division 1</option>
+                                <option value="2">Division 2</option>
+                                <option value="3">Division 3</option>
                         </select>
                 </div>
                 <h3>Testing Site</h3>
