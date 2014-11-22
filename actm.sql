@@ -1,4 +1,10 @@
-# actm.sql
+/*###################################################################
+#	Name:		actm.sql
+#	Authors:	
+#
+#	Description: 	database for storing information on 
+#					mentors, teams, and respective schools
+###################################################################*/
 drop database actm;
 create database actm;
 use actm;
